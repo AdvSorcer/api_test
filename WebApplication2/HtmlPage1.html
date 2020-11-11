@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form name="form1" method="post" action="api/upload" enctype="multipart/form-data">
+        <div>
+            <label>
+                Brows File
+            </label>
+            <input name="myFile" type="file" />
+        </div>
+        <div>
+            <input type="submit" value="Upload" />
+        </div>
+        <div id="div_main"></div>
+    </form>
+</body>
+</html>
+<script>
+    fetch('http://localhost:10891/api/order', {
+        method: 'GET',
+        headers: new Headers({ 'Content-Type': 'text/json' })
+         })
+        .then(function (res) {
+            //It returns a promise that resolves with the result of parsing the body text as JSON.
+            return res.json(); 
+        })
+        .then(function (myJson) {
+            console.log(myJson[0].KEYED_NAME)
+            console.log(typeof(myJson))  // ouput : string
+        });
+</script>
